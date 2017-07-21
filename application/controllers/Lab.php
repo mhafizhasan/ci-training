@@ -6,8 +6,9 @@ class Lab extends CI_Controller {
 
 	public function index()
 	 {
-		// var_dump($_POST);
-		$this->load->view('login');
+
+		$vars['content'] = 'login';
+		$this->load->view('template', $vars);
 
 		// if($_POST == NULL) {
 
@@ -57,7 +58,13 @@ class Lab extends CI_Controller {
 				// get all users
 				$vars['all'] = $this->lab_model->getAllUser();
 
-				$this->load->view('success', $vars);
+				$vars['content'] = 'success';
+
+				echo '<pre>';
+				print_r($vars);
+				echo '</pre>';
+
+				$this->load->view('template', $vars);
 
 			} else {
 
