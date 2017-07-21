@@ -93,11 +93,18 @@ class Lab extends CI_Controller {
 
 
 
+	public function update($id = '')
+	{
+		$vars = $this->lab_model->getUserById($id);
 
+		$this->load->view('update', $vars);
+	}
 
+	public function submitUpdate($id = '')
+	{
+		$this->lab_model->updateUser($id);
 
-
-
+	}
 
 
 

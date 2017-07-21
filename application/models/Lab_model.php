@@ -9,6 +9,26 @@ class Lab_model extends CI_Model {
 
     }
 
+    public function updateUser($id = '')
+    {
+        $data = array(
+            'username' => $this->input->post('username'),
+            'password' => $this->input->post('password')
+        );
+
+        $this->db->where('id', $id);
+        $this->db->update('user', $data);
+
+    }
+
+    public function getUserById($id = '')
+    {
+        $this->db->where('id', $id);
+        $rs = $this->db->get('user');
+
+        return $rs->row_array(); // ->username ---- ['username']
+    }
+
     public function registerUser()
     {
         $data = array(
