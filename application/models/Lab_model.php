@@ -12,11 +12,11 @@ class Lab_model extends CI_Model {
     public function registerUser()
     {
         $data = array(
-            'username' => $this->input-post('username'),
-            'password' => $this->input->post('password')
+            'username' => $this->input->post('username'),
+            'password' => md5($this->input->post('password'))
         );
 
-        $this->db->input('user', $data);
+        $this->db->insert('user', $data);
     }
 
     public function getAllUser()

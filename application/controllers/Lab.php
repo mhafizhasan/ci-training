@@ -74,10 +74,21 @@ class Lab extends CI_Controller {
 	public function register()
 	{
 		$this->lab_model->registerUser();
+
+		// redirect('lab/authenticate', 'refresh');
+		$vars['me'] = array(
+					'username' => $this->input->post('username'),
+					'password' => $this->input->post('password')
+				);
+
+		// get all users
+		$vars['all'] = $this->lab_model->getAllUser();
+
+		$this->load->view('success', $vars);
 	}
 
 
-
+	// https://github.com/mhafizhasan/ci-training
 
 
 
